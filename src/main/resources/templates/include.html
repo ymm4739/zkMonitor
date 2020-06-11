@@ -1,0 +1,49 @@
+<head th:fragment=header(title)>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{libs/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{libs/ztree/css/metroStyle/metroStyle.css}">
+    <script th:src="@{js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{libs/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{libs/bootstrap/js/bootstrap.js}"></script>
+    <script th:src="@{libs/ztree/js/jquery.ztree.all.min.js}"></script>
+    <script th:src="@{js/qs.js}"></script>
+    <title th:text="${title}"></title>
+</head>
+
+<nav th:fragment=nav(username)>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">zkMonitor</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/monitor?path=/">Monitor</a></li>
+                    <li><a href="/history">History</a></li>
+
+                </ul>
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">
+                        搜索
+                    </button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            [[${username}]]
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</nav>

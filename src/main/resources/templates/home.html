@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('首页')"></th:block>
+</head>
+<body>
+<div class="container">
+    <div class="row bg-primary">
+        <th:block th:include="include :: nav('admin')"></th:block>
+    </div>
+    <div class="row bg-info" style="margin-top: 20px">
+        <div class="col-md-4 ztree" id="ztree">
+
+        </div>
+        <div class="col-md-8 bg-success">
+            <iframe scrolling="no" width="100%" height="600px" frameborder="0" id="show_iframe"
+                    src="/stat?path=/"></iframe>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var zTreeObj;
+    // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+    var setting = {
+        async: {
+            enable: true,
+            autoParam: ["path"],
+            url: "/list"
+        },
+        callback: {
+            onClick: zTreeOnClick,
+            // onExpand: zTreeOnExpand,
+            onRemove: zTreeOnRemove,
+            //   beforeExpand: zTreeBeforeExpand
+        }
+    };
+    // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+    var zNodes = {
+        name: "/",
+        path: "/",
+        isParent: true,
+        open: true
+    };
+    $(document).ready(function () {
+        zTreeObj = $.fn.zTree.init($("#ztree"), setting, zNodes);
+    });
+
+    function zTreeOnClick(event, treeId, treeNode) {
+        $("#show_iframe").attr('src', "/stat?" + Qs.stringify({path: treeNode.path}));
+    }
+
+    function zTreeOnRemove(event, treeId, treeNode) {
+        zTreeObj = $.fn.zTree.getZTreeObj(treeId);
+        //zTreeObj.addNodes()
+    }
+
+    function doWebsocket(data) {
+        var path = data;
+        var zTreeObj = $.fn.zTree.getZTreeObj()
+        var treeNode
+    }
+</script>
+</body>
+</html>

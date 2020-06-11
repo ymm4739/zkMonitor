@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('监控')"></th:block>
+</head>
+<body>
+<div class="container">
+    <div class="row bg-primary">
+        <th:block th:include="include :: nav('admin')"></th:block>
+    </div>
+    <div class="row bg-info" style="margin-top: 20px">
+        <!--        <div class="col-md-4 ztree" id="ztree">-->
+
+        <!--        </div>-->
+        <div class="col-md-8 bg-success">
+            <iframe scrolling="no" width="100%" height="600px" frameborder="0" id="show_iframe"
+                    th:src="'/stat?path=' + ${path}"></iframe>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    function doWebsocket(data) {
+        var sid = '0';
+        sid = data.substr(5);
+
+        $("#show_iframe").attr('src', "/dataChange?" + Qs.stringify({path: [[${path}]], sid: sid}));
+
+    }
+</script>
+<script type="text/javascript" th:src="@{js/websocket.js}">
+</script>
+</body>
+</html>

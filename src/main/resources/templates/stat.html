@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('节点信息')"></th:block>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div>
+            <table class="table" th:object="${zNode}">
+                <tr>
+                    <td>name:</td>
+                    <td th:text="*{name}"></td>
+                </tr>
+                <tr>
+                    <td>path:</td>
+                    <td th:text="*{path}"></td>
+                </tr>
+                <tr>
+                    <td>data:</td>
+                    <td th:text="*{data}"></td>
+                </tr>
+                <tr>
+                    <td>dataLength:</td>
+                    <td th:text="*{stat.dataLength}"></td>
+                </tr>
+                <tr>
+                    <td>numChildren:</td>
+                    <td th:text="*{stat.numChildren}"></td>
+                </tr>
+                <tr>
+                    <td>ctime:</td>
+                    <td th:text="*{#dates.format(stat.ctime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+                <tr>
+                    <td>mtime:</td>
+                    <td th:text="*{#dates.format(stat.mtime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+                <tr>
+                    <td>version:</td>
+                    <td th:text="*{stat.version}"></td>
+                </tr>
+
+                <tr>
+                    <td>cversion:</td>
+                    <td th:text="*{stat.cversion}"></td>
+                </tr>
+                <tr>
+                    <td>aversion:</td>
+                    <td th:text="*{stat.aversion}"></td>
+                </tr>
+                <tr>
+                    <td>czxid:</td>
+                    <td th:text="*{stat.czxid}"></td>
+                </tr>
+                <tr>
+                    <td>mzxid:</td>
+                    <td th:text="*{stat.mzxid}"></td>
+                </tr>
+                <tr>
+                    <td>pzxid:</td>
+                    <td th:text="*{stat.pzxid}"></td>
+                </tr>
+                <tr>
+                    <td>ephemeralOwner:</td>
+                    <td th:text="*{stat.ephemeralOwner}"></td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
