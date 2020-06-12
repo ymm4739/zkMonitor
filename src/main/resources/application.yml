@@ -7,7 +7,6 @@ spring:
     url: jdbc:h2:file:./.h2/zkMonitor;AUTO_SERVER=TRUE
     schema: classpath:db/schema.sql
     password: 123456
-
   h2:
     console:
       enabled: true
